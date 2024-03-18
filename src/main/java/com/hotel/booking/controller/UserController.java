@@ -26,9 +26,9 @@ public class UserController {
     }
 
     @PostMapping(value = "/users")
-    public User newUser(@RequestBody User user){
+    public ResponseEntity<User> newUser(@RequestBody User user){
         this.userRepository.add(user);
-        return user; // new ResponseEntity(user, HttpStatus.CREATED);
+        return new ResponseEntity(user, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/users/{id}")
@@ -41,7 +41,7 @@ public class UserController {
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping
+    @DeleteMapping(value="/users/{id}")
     public ResponseEntity deleteUser(@PathVariable int id){
         boolean result = this.userRepository.deleteUser(id);
         if(result)

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-
     private int id;
     private String name;
     private String mailId;
