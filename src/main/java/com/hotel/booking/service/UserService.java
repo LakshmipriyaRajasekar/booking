@@ -20,6 +20,7 @@ public class UserService {
     }
 
     public User getUserDetailById(long id) {
+
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
