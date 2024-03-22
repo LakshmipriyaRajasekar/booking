@@ -22,9 +22,12 @@ public class UserService {
     }
 
     public User getUserDetailById(long id) {
-
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
+    }
+
+    public User getUserDetailByMailID(String mailId) {
+        return userRepository.findByMailId(mailId);
     }
 
     public User addUserInfo(User user) {

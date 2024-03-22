@@ -51,7 +51,20 @@ public class UserController {
         return new ResponseEntity<>(userService.getUserDetailById(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Get the user information by mail address")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Get user details by mailid",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)) }),
+            @ApiResponse(responseCode = "404", description = "users not found",
+                    content = @Content) })
+    @GetMapping(path = "/mailid{mailid}")
+    public ResponseEntity<?> getUserDetailByMailId(@PathVariable(name="mailid") String mailId ){
+        return new ResponseEntity<>(userService.getUserDetailByMailID(mailId), HttpStatus.OK);
+    }
+
     @Operation(summary = "Get the user information by name")
+
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Get user details by name",
                     content = { @Content(mediaType = "application/json",
