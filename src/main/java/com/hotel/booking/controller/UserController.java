@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,7 +59,7 @@ public class UserController {
                             schema = @Schema(implementation = User.class)) }),
             @ApiResponse(responseCode = "404", description = "users not found",
                     content = @Content) })
-    @GetMapping(path = "/mailid{mailid}")
+    @GetMapping(path = "/mailid/{mailid}")
     public ResponseEntity<?> getUserDetailByMailId(@PathVariable(name="mailid") String mailId ){
         return new ResponseEntity<>(userService.getUserDetailByMailID(mailId), HttpStatus.OK);
     }
@@ -71,7 +72,7 @@ public class UserController {
                             schema = @Schema(implementation = User.class)) }),
             @ApiResponse(responseCode = "404", description = "users not found",
                     content = @Content) })
-    @GetMapping(path = "name/{name}")
+    @GetMapping(path = "/name/{name}")
     public ResponseEntity<?> getUserDetailByName(@PathVariable(name="name") String name ){
         return new ResponseEntity<>(userService.getUserDetailByName(name), HttpStatus.OK);
     }

@@ -3,15 +3,13 @@ package com.hotel.booking.service;
 import com.hotel.booking.exception.UserNotFoundException;
 import com.hotel.booking.pojo.User;
 import com.hotel.booking.repository.UserRepository;
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
-
 @Service
 public class UserService {
     @Autowired
